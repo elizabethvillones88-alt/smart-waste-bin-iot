@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Waste Bin IoT System</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+</head>
+
+<body>
+    <header>
+        <h1>Smart Waste Bin IoT System</h1>
+        <p>Intelligent Waste Management with Route Planning</p>
+    </header>
+
+    <nav>
+        <button onclick="showSection('intro')">IoT Introduction</button>
+        <button onclick="showSection('dashboard')">Dashboard</button>
+        <button onclick="showSection('routes')">Route Planning</button>
+    </nav>
+
+    <main>
+        <section id="intro" class="active">
+            <h2>Introduction to IoT in Waste Management</h2>
+            <div class="iot-concepts">
+                <div class="concept">
+                    <h3>Sensors</h3>
+                    <p>Ultrasonic sensors measure waste levels in bins</p>
+                    <div class="sensor-demo">
+                        <div class="bin">
+                            <div class="waste-level" id="wasteLevel"></div>
+                        </div>
+                        <p>Fill Level: <span id="fillPercent">0%</span></p>
+                    </div>
+                </div>
+                <div class="concept">
+                    <h3>Connectivity</h3>
+                    <p>ESP32 microcontroller with WiFi connectivity</p>
+                    <div class="connectivity-status">
+                        <div class="status-indicator" id="connectionStatus">●</div>
+                        <span id="statusText">Connected</span>
+                    </div>
+                </div>
+
+            </div>
+            </div>
+        </section>
+
+        <section id="dashboard">
+            <h2>Waste Bin Dashboard</h2>
+            <div class="bins-grid">
+                <div class="bin-card" data-id="1">
+                    <h3>Bin #1</h3>
+                    <div class="bin-visual">
+                        <div class="bin-container">
+                            <div class="waste-fill" style="height: 30%"></div>
+                        </div>
+                    </div>
+                    <p>Fill Level: 30%</p>
+                    <p>Location: Luneta Park</p>
+                    <p>Last Updated: 2 min ago</p>
+                </div>
+                <div class="bin-card" data-id="2">
+                    <h3>Bin #2</h3>
+                    <div class="bin-visual">
+                        <div class="bin-container">
+                            <div class="waste-fill" style="height: 75%"></div>
+                        </div>
+                    </div>
+                    <p>Fill Level: 75%</p>
+                    <p>Location: Legaspi City</p>
+                    <p>Last Updated: 5 min ago</p>
+                </div>
+                <div class="bin-card" data-id="3">
+                    <h3>Bin #3</h3>
+                    <div class="bin-visual">
+                        <div class="bin-container">
+                            <div class="waste-fill" style="height: 45%"></div>
+                        </div>
+                    </div>
+                    <p>Fill Level: 45%</p>
+                    <p>Location: SM Mall of Asia</p>
+                    <p>Last Updated: 1 min ago</p>
+                </div>
+                <div class="bin-card" data-id="4">
+                    <h3>Bin #4</h3>
+                    <div class="bin-visual">
+                        <div class="bin-container">
+                            <div class="waste-fill" style="height: 90%"></div>
+                        </div>
+                    </div>
+                    <p>Fill Level: 90%</p>
+                    <p>Location: Quezon City</p>
+                    <p>Last Updated: 3 min ago</p>
+                </div>
+                <div class="bin-card" data-id="5">
+                    <h3>Bin #5</h3>
+                    <div class="bin-visual">
+                        <div class="bin-container">
+                            <div class="waste-fill" style="height: 100%"></div>
+                        </div>
+                    </div>
+                    <p>Fill Level: 100%</p>
+                    <p>Location: Makati City</p>
+                    <p>Last Updated: 2 min ago</p>
+                </div>
+            </div>
+            <div class="alerts">
+                <h3>Alerts</h3>
+                <div class="alert emergency">Bin #5 is 100% full - collection required</div>
+                <div class="alert urgent">Bin #4 is 90% - requires immediate collection</div>
+                <div class="alert warning">Bin #2 is 75% - schedule collection soon</div>
+
+            </div>
+        </section>
+
+        <section id="routes">
+            <h2>Route Planning</h2>
+            <div class="route-controls">
+                <button onclick="optimizeRoute()">Optimize Route</button>
+                <button onclick="simulateCollection()">Simulate Collection</button>
+                <div class="route-stats">
+                    <p>Total Distance: <span id="totalDistance">0 km</span></p>
+                    <p>Estimated Time: <span id="estimatedTime">0 min</span></p>
+                </div>
+            </div>
+            <div id="map" class="map-container"></div>
+            <div class="route-details">
+                <h3>Collection Route</h3>
+                <ol id="routeList">
+                    <li>Start: Waste Collection Center - Manila</li>
+                    <li>Bin #5 (100%) - Makati City</li>
+                    <li>Bin #4 (90%) - Quezon City</li>
+                    <li>Bin #2 (75%) - Legaspi City</li>
+                    <li>Bin #3 (45%) - SM Mall of Asia</li>
+                    <li>Bin #1 (30%) - Luneta Park</li>
+                    <li>End: Waste Collection Center - Manila</li>
+                </ol>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Smart Waste Bin IoT System. Built with HTML, CSS, JavaScript & Leaflet.</p>
+    </footer>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
